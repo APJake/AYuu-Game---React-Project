@@ -1,0 +1,34 @@
+.gati{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.myrow{
+    background-color: rgb(21, 21, 22);
+    padding: 15px 20px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    max-width: 500px;
+}
+.myrow-gp{
+    width: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.myrow-gp:first-child{
+    width: fit-content;
+}
+.myrow-gp .mytext:nth-child(1){
+    padding-right: 20px;
+}
+.mytext{
+    color: rgb(0, 255, 179);
+}

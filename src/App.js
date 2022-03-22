@@ -5,17 +5,27 @@ import Summary from "./components/Summary";
 import { Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Dashboard from "./components/Dashboard";
+import Ayuu from "./components/Ayuu";
+import "./main.css";
 
 const App = () => {
-    console.log("h");
     return (
         <div className="App">
             <ToastContainer />
-            {/* <NavBar /> */}
+            <NavBar />
             <Routes>
-                <Route path="/" element={<Summary />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
+                <Route path="" element={<Dashboard />} />
+                <Route path="summary" element={<Summary />} />
+                <Route path="login" element={<Login />} />
+                <Route path="register" element={<Register />} />
+                <Route path="ayuu">
+                    <Route
+                        path=":id"
+                        element={<Ayuu />}
+                        key={document.location.href}
+                    />
+                </Route>
             </Routes>
         </div>
     );

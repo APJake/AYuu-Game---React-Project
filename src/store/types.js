@@ -1,2 +1,8 @@
 export const GET_SUMMARY = "GET_SUMMARY";
 export const SUMMARY_ERROR = "SUMMARY_ERROR";
+
+export const SET_LOADING = "SET_LOADING";
+
+export const GET_USER_TRANSACTIONS = "GET_USER_TRANSACTIONS";
+export const GET_USERS = "GET_USERS";
+export const USERS_ERROR = "USERS_ERROR";

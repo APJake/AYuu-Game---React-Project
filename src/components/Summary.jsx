@@ -2,21 +2,25 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getSummary } from "../store/actions/summaryActions";
 import moment from "moment";
-import "./Summary.css";
+import {Link} from 'react-router-dom';
+import Loading from './Loading';
+
+
+const dynamicDingerClassname = (dinger)=> {
+    return dinger > 0 ? "mytext gati-success" : "mytext gati-danger";
+}
 
 class Summary extends Component {
+
     UserDetail(userDetail, index) {
         const { user, total } = userDetail;
         return (
             <div className="myrow" key={user._id}>
                 <div className="myrow-gp">
                     <div className="mytext">{index + 1}</div>
-                    <div className="mytext">{user.nickname}</div>
+                <Link to={`/ayuu/${user._id}`} className="mytext">{user.nickname}</Link>
                 </div>
-                <div className="myrow-gp">
-                    <div className="mytext">{total}</div>
-                    <div className="mytext">{user.dinger}</div>
-                </div>
+                <div className={dynamicDingerClassname(total)}>{total}</div>
             </div>
         );
     }
@@ -24,13 +28,11 @@ class Summary extends Component {
     DetailPage(detail) {
         let showDate = moment(new Date(detail._id)).fromNow();
         return (
-            <div key={detail._id} className="container my-5">
-                <p className="text-white">{showDate}</p>
-                <div className="container">
+            <div key={detail._id} className="gati">
+                <p className="text-white mt-4">{showDate}</p>
                     {detail.users.map((userDetail, index) =>
                         this.UserDetail(userDetail, index)
                     )}
-                </div>
             </div>
         );
     }
@@ -42,9 +44,10 @@ class Summary extends Component {
         const summary = this.props.summary;
         console.log(summary);
         return (
-            <div className="gati">
+            <div className="container">
+                <center><h5 className="mytext mt-3">ရက်စွဲအလိုက် အနိုင်/အရှုံးစာရင်း</h5></center>
                 {summary.loading ? (
-                    <h2 className="text-white">Loading</h2>
+                          <Loading />
                 ) : (
                     summary.summary.map((detail) => this.DetailPage(detail))
                 )}
